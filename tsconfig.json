@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs"
+  },
+  "files": [
+    "typings/index.d.ts",
+    "handler.ts"
+  ]
+}

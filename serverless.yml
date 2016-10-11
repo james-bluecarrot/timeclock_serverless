@@ -8,7 +8,7 @@ functions:
   hello:
     handler: handler.hello
 
-   events:
+  events:
 #      - http:
 #          path: users/create
 #          method: get
