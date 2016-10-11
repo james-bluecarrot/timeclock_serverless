@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "firebase-timeclock-app",
+  "private_key_id": "fb5eb2d6e36b6eee0e18e3e37cfa346501217a28",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLhYdX9sRMaClp\nhxCmlfT/KNuItnm556S3Go1U4O7TCY5iwqaxExld5+FVHucjxlXObz3Bc6EAhn1L\n/AlWDjc/2hWWR8UE2qHt0CoY9F8dRo23U2GTtIJhCialkXWDizFsvfzlRpdfoaks\ngLOjaZVOmTfmBAtx63V8kusFplRc6lHlz4PoWEkTTk3/5ZUQN9xtRiQ+wQp+OCpe\nBwqgWiLfIRRiyEwtSCDMyQcSY9MdNcD7TIKy3M8Z1ZwuqEXIHQ+Jr1rnEqOwcATI\nD23JS7ESvCU/LroD0qIviusXvUk8mGSpvEKD4h+JEfo/6JkJCtNZi4hR7HltViwX\nYTKk/9gBAgMBAAECggEAYYIFGTDiVZUmGiga4yU/byx9GeALK/V+pjdzdTIbWkLe\n1BRcVsRGyAX7oJOgvDQfEjubw96JSb4ls8z6EB/Zep8a7phOHYg+QrkUIkaad2VB\nKo8pVeILAUEiyPqK6c47jNTtoE+U4L2MVwUGjAle/nxMGsjfTuI3tMqTDW7mRmkl\ntgM+Jx++0aBO2Aq8hSb/G07wh0Onm74ItPXMS5FeadC3LkhP+lEVqZtVkFFoiaDu\nN6ubQYRIzjY4u1E5W7u8DAV+k3EKC2hZsYDL51KZOh8UngIKjqiQNbp83335CFLG\niEVZjQZ9idhxNT1S+oayzqBz2T8wovmkqoEL78WgXQKBgQD7q2K4ROZYwG+dKmUf\napPbELIVHS7Id953i8D5Q2f+d/Gwgk+kYNVQYwzU/q2Lvrg/8lTMxDepmlbi54qb\ngHIntzZ37g6sUheAO/SrPSjr85piJxLYAsb95idiXnLQpZ/UsICwW5YkFzNwhdLW\nSxQEOLdxKiJPVl3nJdWiU0bsZwKBgQDPBgy3ubyOf92vIIvtKiQa6TpA9h0ZOSv2\nxxmMt4WNBcEUEN9VdIAOEcmS0RGP9tgJoKqGj8EutP7gAkeGpJq1A4yztaY75msQ\nt46DxHIDj37p5v9NMAGp1BNw5oiqvs8F/Vvwttyt5c6QykO+GJKKC01XAUg8tcpY\nflgGNO3XVwKBgQDW80frCPYQ4bOy8e3Sym2kknr3q6g0kqURR+03OMpOvtVQI8yw\nIgCvmxnvpeJGVEv8WhbxmbnNA0SooohxTmCx6Tr9bfdcWPU3kn3j7+XOuY6nvKXM\nl3qsivIig3bfHEcKGwKfHmp7QtGtjq9IVnGvNV4AqrMJPkQP0/HGpggSiwKBgQDJ\nS+yZyLQbKyF244KrPMqWkCjgeW6Z1Al3jui89sWY9ftjc3R1Ny48f/csFrWo8i/m\nTJ8C8Ey7Caq6Tf0WYn87exQYuYvFuqpoOtMMNLtX0vNoo/+iIge8BkZRBRfmTlom\nTNBVIrk5LbbI+qMb9/Ck4ZB2BP0kau8xVMhqYJTTSQKBgEe7E1iX+UD86cRmDROg\nwq9Vn36lPv+ApjjqoBzqwXtt5HzusSEaZ3hIWQfgSdj7mPb0O25ZzmfQbzUe7Ne+\nKDWLiB9DFvBcPiNJ8yphUx6futrKOfEvwiROVwr2oJaAOvCfCS6w7UPJsAnbnuEF\n/2df2foXE0+kBqp9oMcNfx2p\n-----END PRIVATE KEY-----\n",
+  "client_email": "sendreport@firebase-timeclock-app.iam.gserviceaccount.com",
+  "client_id": "102602916887358832812",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sendreport%40firebase-timeclock-app.iam.gserviceaccount.com"
+}
