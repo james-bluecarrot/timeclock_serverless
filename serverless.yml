@@ -1,0 +1,18 @@
+service: timeclock-app-report
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+functions:
+  hello:
+    handler: handler.hello
+
+   events:
+#      - http:
+#          path: users/create
+#          method: get
+     - schedule: rate(10 minutes)
+
+plugins:
+  - serverless-run-function-plugin
