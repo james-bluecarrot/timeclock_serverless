@@ -11,7 +11,7 @@ functions:
       - http:
           path: sendreport
           method: post
-          cros: true
+          cors: true
           integration: lambda
       - schedule: cron(0 6 ? * MON *)
 
