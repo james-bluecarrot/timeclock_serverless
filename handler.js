@@ -86,8 +86,8 @@ function sendreport(event, context, cb) {
             });
             if (Object.keys(logs).length > 0) {
                 var text = data.join('\n');
-                fs.writeFileSync('timesheet.txt', text);
-                var file = fs.readFileSync('timesheet.txt');
+                fs.writeFileSync('/tmp/timesheet.txt', text);
+                var file = fs.readFileSync('/tmp/timesheet.txt');
                 var content = {
                     subject: 'Timesheet!',
                     html: '<html><body><p>' +
