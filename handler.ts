@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as firebase from 'firebase';
+import * as moment from 'moment';
 
 let SparkPost = require('sparkpost');
 let sp = new SparkPost('3fd0a73c196a3e1d67ccb4e38b83d42ee64c5385');
@@ -82,11 +83,13 @@ export function sendreport(event, context, cb) {
                 Object.keys(logs).map(key => {
                     let log = logs[key];
                     let ts = log.timestamp.TIMESTAMP;
-                    let date = new Date(ts);
+                    // let date = new Date(ts);
+                    let date = moment(ts).utcOffset('+13:00');
+                    console.log('date', `${date.year()}-${date.month() + 1}-${date.date()} ${date.hour()}:${date.minute()}`)
                     let [user] = users.filter(user => user.email === log.user.email);
                     if (user) {
                         // 31 2011 03 11 0800 00000000000123 0000000000000000000000000000000000
-                        let value = `31${date.getUTCFullYear()}${date.getUTCMonth()}${date.getUTCDay()}${date.getUTCHours()}${date.getUTCMinutes()}0000${user['code']}0000000000000000000000000000000000`;
+                        let value = `31${date.year()}${date.month() + 1}${date.date()}${date.hour()}${date.minute()}0000${user['code']}0000000000000000000000000000000000`;
                         data.push(value);
                     }
                 });
@@ -108,7 +111,7 @@ export function sendreport(event, context, cb) {
                         "attachments": [
                             {
                                 "type": "text/plain; charset=UTF‐8",
-                                "name": "timesheet.txt",
+                                "name": "timesheet.daf",
                                 "data": file.toString('base64')
                             }
                         ]

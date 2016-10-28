@@ -1,6 +1,7 @@
 "use strict";
 var fs = require('fs');
 var firebase = require('firebase');
+var moment = require('moment');
 var SparkPost = require('sparkpost');
 var sp = new SparkPost('3fd0a73c196a3e1d67ccb4e38b83d42ee64c5385');
 function sendEmail(content, email) {
@@ -76,11 +77,13 @@ function sendreport(event, context, cb) {
             Object.keys(logs).map(function (key) {
                 var log = logs[key];
                 var ts = log.timestamp.TIMESTAMP;
-                var date = new Date(ts);
+                // let date = new Date(ts);
+                var date = moment(ts).utcOffset('+13:00');
+                console.log('date', date.year() + "-" + (date.month() + 1) + "-" + date.date() + " " + date.hour() + ":" + date.minute());
                 var user = users.filter(function (user) { return user.email === log.user.email; })[0];
                 if (user) {
                     // 31 2011 03 11 0800 00000000000123 0000000000000000000000000000000000
-                    var value = "31" + date.getUTCFullYear() + date.getUTCMonth() + date.getUTCDay() + date.getUTCHours() + date.getUTCMinutes() + "0000" + user['code'] + "0000000000000000000000000000000000";
+                    var value = "31" + date.year() + (date.month() + 1) + date.date() + date.hour() + date.minute() + "0000" + user['code'] + "0000000000000000000000000000000000";
                     data.push(value);
                 }
             });
@@ -102,7 +105,7 @@ function sendreport(event, context, cb) {
                     "attachments": [
                         {
                             "type": "text/plain; charset=UTF‐8",
-                            "name": "timesheet.txt",
+                            "name": "timesheet.daf",
                             "data": file.toString('base64')
                         }
                     ]
