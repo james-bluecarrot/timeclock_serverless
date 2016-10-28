@@ -1,4 +1,5 @@
 "use strict";
+var fs = require('fs');
 var firebase = require('firebase');
 var SparkPost = require('sparkpost');
 var sp = new SparkPost('3fd0a73c196a3e1d67ccb4e38b83d42ee64c5385');
@@ -56,11 +57,14 @@ function sendreport(event, context, cb) {
     var ref2 = db.ref('users');
     var users = [];
     var data = [];
+    console.log('event state date', event.body.startDate);
+    console.log('event end date', event.body.endDate);
     var startDate = event.body && event.body.startDate ? new Date(event.body.startDate) : new Date();
     var endDate = event.body && event.body.endDate ? new Date(event.body.endDate) : new Date();
     if (!event.body || !event.body.startDate)
         startDate.setDate(startDate.getDate() - 7);
-    console.log(startDate.toUTCString(), endDate.toUTCString());
+    console.log('Date', startDate.toUTCString(), endDate.toUTCString());
+    console.log('Timestamp', getTimeStamp(startDate), getTimeStamp(endDate));
     ref2.once('value', function (snap) {
         users = snap.val();
         ref.orderByChild('timestamp/TIMESTAMP')
@@ -82,6 +86,8 @@ function sendreport(event, context, cb) {
             });
             if (Object.keys(logs).length > 0) {
                 var text = data.join('\n');
+                fs.writeFileSync('timesheet.txt', text);
+                var file = fs.readFileSync('timesheet.txt');
                 var content = {
                     subject: 'Timesheet!',
                     html: '<html><body><p>' +
@@ -96,8 +102,8 @@ function sendreport(event, context, cb) {
                     "attachments": [
                         {
                             "type": "text/plain; charset=UTF‐8",
-                            "name": "timesheet.daf",
-                            "data": new Buffer(text, 'base64').toString()
+                            "name": "timesheet.txt",
+                            "data": file.toString('base64')
                         }
                     ]
                 };

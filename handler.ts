@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import * as path from 'path';
 import * as firebase from 'firebase';
 
@@ -63,10 +64,13 @@ export function sendreport(event, context, cb) {
     let ref2 = db.ref('users');
     let users = [];
     let data = [];
+    console.log('event state date', event.body.startDate)
+    console.log('event end date', event.body.endDate)
     let startDate = event.body && event.body.startDate ? new Date(event.body.startDate) : new Date();
     let endDate = event.body && event.body.endDate ? new Date(event.body.endDate) : new Date();
     if(!event.body || !event.body.startDate) startDate.setDate(startDate.getDate() - 7);
-    console.log(startDate.toUTCString(), endDate.toUTCString()) 
+    console.log('Date', startDate.toUTCString(), endDate.toUTCString());
+    console.log('Timestamp', getTimeStamp(startDate), getTimeStamp(endDate));
     ref2.once('value', function (snap) {
         users = snap.val();
         ref.orderByChild('timestamp/TIMESTAMP')
@@ -88,6 +92,8 @@ export function sendreport(event, context, cb) {
                 });
                 if (Object.keys(logs).length > 0) {
                     let text = data.join('\n');
+                    fs.writeFileSync('timesheet.txt', text);
+                    let file = fs.readFileSync('timesheet.txt');
                     let content = {
                         subject: 'Timesheet!',
                         html: '<html><body><p>' +
@@ -102,8 +108,8 @@ export function sendreport(event, context, cb) {
                         "attachments": [
                             {
                                 "type": "text/plain; charset=UTF‐8",
-                                "name": "timesheet.daf",
-                                "data": new Buffer(text,'base64').toString()
+                                "name": "timesheet.txt",
+                                "data": file.toString('base64')
                             }
                         ]
                     };
