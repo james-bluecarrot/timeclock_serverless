@@ -7,7 +7,7 @@ let SparkPost = require('sparkpost');
 let sp = new SparkPost('3fd0a73c196a3e1d67ccb4e38b83d42ee64c5385');
 
 function sendEmail(content: Object, email: string) {
-    content['from'] = 'Time Clock App <testing@sparkpostbox.com>';
+    content['from'] = 'Time Clock App <sparkpost@bluecarrot.co.nz>';
     return new Promise<boolean>((resolve, reject) => {
         sp.transmissions.send({
             transmissionBody: {
