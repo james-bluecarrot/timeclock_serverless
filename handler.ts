@@ -44,6 +44,13 @@ function randomString(len, charSet?) {
     return randomString;
 }
 
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
 function initFirebase() {
     try {
         firebase.initializeApp(credentials);
@@ -65,8 +72,8 @@ export function sendreport(event, context, cb) {
     let ref2 = db.ref('users');
     let users = [];
     let data = [];
-    console.log('event state date', event.body.startDate)
-    console.log('event end date', event.body.endDate)
+    if (event.body) console.log('event state date', event.body.startDate)
+    if (event.body) console.log('event end date', event.body.endDate)
     let startDate = event.body && event.body.startDate ? new Date(event.body.startDate) : new Date();
     let endDate = event.body && event.body.endDate ? new Date(event.body.endDate) : new Date();
     if(!event.body || !event.body.startDate) startDate.setDate(startDate.getDate() - 7);
@@ -85,11 +92,11 @@ export function sendreport(event, context, cb) {
                     let ts = log.timestamp.TIMESTAMP;
                     // let date = new Date(ts);
                     let date = moment(ts).utcOffset('+13:00');
-                    console.log('date', `${date.year()}-${date.month() + 1}-${date.date()} ${date.hour()}:${date.minute()}`)
+                    console.log('date', `${addZero(date.year())}-${addZero(date.month() + 1)}-${addZero(date.date())} ${addZero(date.hour())}:${addZero(date.minute())}`)
                     let [user] = users.filter(user => user.email === log.user.email);
                     if (user) {
                         // 31 2011 03 11 0800 00000000000123 0000000000000000000000000000000000
-                        let value = `31${date.year()}${date.month() + 1}${date.date()}${date.hour()}${date.minute()}0000${user['code']}0000000000000000000000000000000000`;
+                        let value = `31${date.year()}${addZero(date.month() + 1)}${addZero(date.date())}${addZero(date.hour())}${addZero(date.minute())}0000${user['code']}0000000000000000000000000000000000`;
                         data.push(value);
                     }
                 });
