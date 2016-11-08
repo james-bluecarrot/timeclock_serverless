@@ -101,7 +101,7 @@ export function sendreport(event, context, cb) {
                     }
                 });
                 if (Object.keys(logs).length > 0) {
-                    let text = data.join('\n');
+                    let text = data.join('\r');
                     fs.writeFileSync('/tmp/timesheet.txt', text);
                     let file = fs.readFileSync('/tmp/timesheet.txt');
                     let content = {

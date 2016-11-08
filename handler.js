@@ -96,7 +96,7 @@ function sendreport(event, context, cb) {
                 }
             });
             if (Object.keys(logs).length > 0) {
-                var text = data.join('\n');
+                var text = data.join('\r');
                 fs.writeFileSync('/tmp/timesheet.txt', text);
                 var file = fs.readFileSync('/tmp/timesheet.txt');
                 var content = {
